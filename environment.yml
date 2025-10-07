@@ -1,0 +1,62 @@
+name: ragbot
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  # ---- core runtime ----
+  - python=3.11
+  - pip>=24.0
+
+  # ---- data / utils ----
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - sqlalchemy
+  - sqlite
+  - lxml
+  - beautifulsoup4
+  - httpx
+  - pydantic
+  - python-dotenv
+  - typer
+  - rich
+  - orjson
+  - tqdm
+  - regex
+  - psutil
+
+  # ---- notebooks ----
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
+
+  # ---- PyTorch + NVIDIA CUDA runtime (let solver choose compatible 12.x) ----
+  - pytorch
+  - pytorch-cuda  # do NOT pin; this pulls a compatible CUDA runtime for your driver
+
+  # ---- install the rest via pip ----
+  - pip:
+      # API / server
+      - fastapi
+      - uvicorn[standard]
+      # parsing
+      - pymupdf            # fitz (fast PDF)
+      - pdfminer.six
+      - trafilatura        # HTML → clean text
+      - readability-lxml
+      # retrieval / vectors
+      - sentence-transformers
+      - qdrant-client
+      - opensearch-py
+      - rank-bm25          # local BM25 (no server) for quick tests
+      # reranker / huggingface
+      - FlagEmbedding      # BGE cross-encoder reranker
+      - transformers
+      - accelerate
+      - huggingface-hub
+      # dev/ops
+      - watchfiles         # folder watcher for dynamic ingestion
+      - loguru
+      - langfuse           # optional tracing

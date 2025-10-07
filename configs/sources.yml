@@ -1,0 +1,7 @@
+# MVP registry of sources
+local_folders:
+  - path: data/raw
+    recursive: false
+
+url_lists:
+  - file: configs/urls.txt  # create this file if you want URLs
